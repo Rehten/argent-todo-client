@@ -1,8 +1,5 @@
-export class BackendTime {
-    constructor(
-        public readonly day: number,
-        public readonly month: number,
-        public readonly year: number
-    ) {
-    }
+export interface BackendTime {
+    readonly day: number;
+    readonly month: number;
+    readonly year: number;
 }

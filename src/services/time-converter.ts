@@ -3,19 +3,42 @@ import {BackendTime} from "../types/entities/backend-time";
 import {Time} from "../types/entities/time";
 import {Reverse} from "../types/services/reverse";
 
-class TimeConverter implements Straight<BackendTime, Time> {
+class TimeConverter implements Straight<BackendTime, Time>, Reverse<BackendTime, Time> {
     straight(input: BackendTime): Time {
-        let isTimeValid = true;
+        const isDayValid: boolean = ((input.day >= 1) && (input.day <= 31));
+        const isMonthValid: boolean = ((input.month >= 1) && (input.month <= 12));
+        let isTimeValid: boolean = isMonthValid && isDayValid;
 
-        for (let key in input) {
-            if (input[key as keyof BackendTime] < 0) {
-                isTimeValid = false;
+        if (isTimeValid) {
+            for (let key in input) {
+                if (input[key as keyof BackendTime] < 0) {
+                    isTimeValid = false;
+                }
             }
         }
 
         if (isTimeValid) {
-            const { year, month, day } = input;
-            return new Time(new Date(year, month + 1, day));
+            const {year, month, day} = input;
+
+            return new Time(new Date(year, month - 1, day));
+        } else {
+            throw Error(`One of this values is not allowed: year ${input.year}, month ${input.month}, day ${input.day}`);
+        }
+    }
+
+    reverse(input: Time): BackendTime {
+        const {date} = input;
+        const isInvalidDate: boolean = isNaN(Number(date));
+        if (!isInvalidDate) {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+
+            return {
+                day,
+                month,
+                year
+            };
         } else {
             throw Error("Negative values is not allowed.");
         }
@@ -23,5 +46,6 @@ class TimeConverter implements Straight<BackendTime, Time> {
 }
 
 const timeConverter = new TimeConverter();
+
 
 export default timeConverter;

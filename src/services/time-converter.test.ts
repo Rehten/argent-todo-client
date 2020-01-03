@@ -4,15 +4,19 @@ import {BackendTime} from "../types/entities/backend-time";
 
 describe('TimeConverter', () => {
     let backendTime: BackendTime;
+    let clientTime: Time;
 
     beforeEach(() => {
         backendTime = {
             year: 2020,
             day: 1,
-            month: 0
+            month: 1
         };
+        clientTime = new Time(new Date("2017-01-26"));
     });
 
+
+    // to backendTime
     it('should transform input object to another object', () => {
         const rslt: Time = timeConverter.straight(backendTime);
 
@@ -34,11 +38,84 @@ describe('TimeConverter', () => {
         expect(test).toThrow(Error);
     });
 
+    it('should correct transform to BackendTime', () => {
+        const rslt: Time = timeConverter.straight(backendTime);
+
+        expect(rslt.date.getFullYear()).toBe(backendTime.year);
+        expect(rslt.date.getDate()).toBe(backendTime.day);
+        expect(rslt.date.getMonth()).toBe(backendTime.month - 1);
+    });
+
+    it('should have throw error if date invalid', () => {
+        const invalidBackendTimeValues: Array<BackendTime> = [
+            {
+                ...backendTime,
+                month: 0
+            },
+            {
+                ...backendTime,
+                day: -200
+            }
+        ];
+        const validBackendTimeValues: Array<BackendTime> = [
+            {
+                year: 0,
+                month: 1,
+                day: 1
+            },
+            {
+                year: 1970,
+                month: 1,
+                day: 1
+            }
+        ];
+
+        invalidBackendTimeValues.forEach((value: BackendTime): void => {
+            const testWithError = (): void => {
+                timeConverter.straight(value)
+            };
+
+            expect(testWithError).toThrow(Error);
+        });
+        validBackendTimeValues.forEach((value: BackendTime): void => {
+            const testWithoutError = (): void => {
+                timeConverter.straight(value);
+            };
+
+            expect(testWithoutError).not.toThrow(Error);
+        });
+
+
+    });
+
+    // to clientTime
+    it('should reverse transformation input object to another object', () => {
+        const rslt: BackendTime = timeConverter.reverse(clientTime);
+
+        expect(rslt).toBeDefined();
+        expect(rslt).not.toBeNull();
+        expect(typeof rslt).toBe('object');
+    });
+
+    it('should fail if date is invalid', () => {
+        const invalidDate: Time = new Time(new Date(1000000000000000000000000000000000));
+
+        const test = () => {
+            timeConverter.reverse(invalidDate);
+        };
+
+        expect(test).toThrow(Error);
+    });
+
     it('should correct transform values', () => {
         const rslt: Time = timeConverter.straight(backendTime);
 
         expect(rslt.date.getFullYear()).toBe(backendTime.year);
         expect(rslt.date.getDate()).toBe(backendTime.day);
         expect(rslt.date.getMonth()).toBe(backendTime.month + 1);
+    });
+
+    it('should have same values after appl straight + reverse methods to initial value', () => {
+
     });
 });
