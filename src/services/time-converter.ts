@@ -28,8 +28,8 @@ class TimeConverter implements Straight<BackendTime, Time>, Reverse<BackendTime,
 
     reverse(input: Time): BackendTime {
         const {date} = input;
-        const isInvalidDate: boolean = isNaN(Number(date));
-        if (!isInvalidDate) {
+        const isValidDate: boolean = !isNaN(Number(date));
+        if (isValidDate) {
             const day = date.getDate();
             const month = date.getMonth() + 1;
             const year = date.getFullYear();
