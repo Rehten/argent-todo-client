@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArgentButton should be same as snapshot 1`] = `
+<div
+  data-test="Snapshot Testing"
+>
+  <button
+    className="btn active btn-outline-danger btn-lg"
+    disabled={false}
+    type="button"
+  />
+</div>
+`;
