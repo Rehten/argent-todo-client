@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArgentInput should be same as snapshot 1`] = `
+<div
+  data-test="Snapshot Testing"
+>
+  <input
+    className="form-control"
+  />
+</div>
+`;
