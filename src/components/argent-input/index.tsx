@@ -5,4 +5,6 @@ interface Props extends FormControlProps {
     dataTest?: string;
 }
 
-export const ArgentInput = (props: Props) => (<div data-test={props.dataTest}><Form.Control {...props} /></div>);
+export const ArgentInput = ({dataTest, ...otherProps}: Props) => {
+    return (<div data-test={dataTest}><Form.Control {...otherProps} /></div>);
+};
