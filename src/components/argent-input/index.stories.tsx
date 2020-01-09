@@ -9,13 +9,13 @@ export const inputSize = () => (
     <div className="container">
         <h2 style={{marginTop: '2rem'}}>Input sizing</h2>
         <div style={{marginBottom: '1rem'}}>
-            <ArgentInput type="text"  size="lg" placeholder="Large text" />
+            <ArgentInput type="text"  size="lg" />
         </div>
         <div style={{marginBottom: '1rem'}}>
-            <ArgentInput type="text" placeholder="Normal text" />
+            <ArgentInput type="text" />
         </div>
         <div style={{marginBottom: '1rem'}}>
-            <ArgentInput type="text"  size="sm" placeholder="Small text" />
+            <ArgentInput type="text"  size="sm" />
         </div>
     </div>
 );
@@ -25,7 +25,7 @@ export const inputWithLabel = () => (
         <h2 style={{marginTop: '2rem'}}>Input with Label</h2>
         <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <ArgentInput type="email" placeholder="Enter email" />
+            <ArgentInput type="email" />
             <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
             </Form.Text>
@@ -33,7 +33,7 @@ export const inputWithLabel = () => (
 
         <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <ArgentInput type="password" placeholder="Password" />
+            <ArgentInput type="password" />
         </Form.Group>
     </div>
 );
@@ -87,7 +87,6 @@ export const OnChangeInput = () => {
                 <Form.Label>Your Name</Form.Label>
                 <ArgentInput
                     type="text"
-                    placeholder="Enter your name"
                     value={name}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                 />

@@ -125,7 +125,7 @@ export const ClickOnButton = () => {
                         variant="outline-primary"
                         onClick={() => setCount(count + 1)}
                     >
-                        Счетчик +1: {count.toString()}
+                        {'Some text' + count.toString()}
                     </ArgentButton>
                 </div>
             </div>

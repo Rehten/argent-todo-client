@@ -14,7 +14,6 @@
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
     "typescript": "^3.7.4"
   },
   "scripts": {
@@ -47,6 +46,7 @@
     "@storybook/addons": "^5.2.8",
     "@storybook/react": "^5.2.8",
     "@types/react-test-renderer": "^16.9.1",
+    "react-scripts": "^3.3.0",
     "react-test-renderer": "^16.12.0"
   }
 }

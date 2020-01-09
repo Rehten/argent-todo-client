@@ -4,7 +4,7 @@ import { Button, ButtonProps } from "react-bootstrap";
 
 interface Props extends ButtonProps {
     dataTest?: string;
-    children: string;
+    children?: string;
     onClick?: () => void;
 }
 
