@@ -11,7 +11,7 @@ interface Props extends ButtonProps {
 export const ArgentButton = ({dataTest, onClick, ...otherProps}: Props) => {
     return (
         <div data-test={dataTest}>
-            <Button {...otherProps} onClick={onClick} />
+            <Button {...otherProps} onClick={onClick}>{otherProps.children}</Button>
         </div>
     );
 };
