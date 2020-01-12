@@ -80,6 +80,12 @@ export const buttonsSize = () => (
                 <ArgentButton variant="secondary" size="lg">Secondary</ArgentButton>
             </div>
             <div style={{marginRight: '1rem'}}>
+                <ArgentButton variant="primary">Primary</ArgentButton>
+            </div>
+            <div style={{marginRight: '1rem'}}>
+                <ArgentButton variant="secondary">Secondary</ArgentButton>
+            </div>
+            <div style={{marginRight: '1rem'}}>
                 <ArgentButton variant="primary" size="sm">Primary</ArgentButton>
             </div>
             <div style={{marginRight: '1rem'}}>
@@ -125,7 +131,7 @@ export const ClickOnButton = () => {
                         variant="outline-primary"
                         onClick={() => setCount(count + 1)}
                     >
-                        {'Some text' + count.toString()}
+                        {'Счетчик: ' + count.toString()}
                     </ArgentButton>
                 </div>
             </div>

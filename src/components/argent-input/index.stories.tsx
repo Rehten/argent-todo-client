@@ -78,7 +78,6 @@ export const inputState = () => (
 
 export const OnChangeInput = () => {
     const [name, setName] = useState('');
-    console.log(name);
 
     return (
         <div className="container">
