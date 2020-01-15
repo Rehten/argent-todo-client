@@ -1,6 +1,7 @@
 import {ListGroup} from "react-bootstrap";
 import React, {useState} from "react";
 import style from './index.module.css';
+import {ArgentInput} from "../argent-input";
 
 interface Props {
     id: number;
@@ -35,7 +36,9 @@ export const TodoItem = (data: Props) => {
         <div className={style.listGroupItem}>
             <input type="checkbox" checked={isChecked} onChange={handleCheck}/>
             {isEditable ?
-                <input value={description} className={style.description} onChange={handleChange} />
+                <div className={style.description}>
+                    <ArgentInput value={description}  onChange={handleChange} />
+                </div>
                 :
                 <div className={style.description}>{description}</div>
             }
