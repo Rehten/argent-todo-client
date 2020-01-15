@@ -1,5 +1,6 @@
 import React from 'react';
 import { ListGroup } from "react-bootstrap";
+import {TodoItem} from "./components/todo-item";
 
 const App: React.FC = () => {
 
@@ -11,13 +12,6 @@ const App: React.FC = () => {
         span: {
             fontSize: '12px'
         },
-        listGroupItem: {
-            paddingLeft: 0,
-            paddingRight: 0,
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center'
-        }
     };
 
     const todos = [
@@ -35,23 +29,17 @@ const App: React.FC = () => {
                 {
                     todos.map(item => {
                         return (
-                            <ListGroup.Item style={style.listGroupItem} key={item.id}>
-                                <div style={style.listGroupItem}>
-                                    <input type="checkbox" />
-                                    <div style={{marginLeft: "1rem"}}>{item.title}</div>
-                                </div>
-                                <div>
-                                    <span style={{marginRight: "1.7rem", color: "#707070"}}>
-                                        <i className="far fa-star"></i>
-                                    </span>
-                                                <span style={{marginRight: "1.7rem", color: "#707070"}}>
-                                        <i className="far fa-edit"></i>
-                                    </span>
-                                                <span style={{marginRight: "1.7rem", color: "#707070"}}>
-                                        <i className="far fa-trash-alt"></i>
-                                    </span>
-                                </div>
-                            </ListGroup.Item>
+                            <React.Fragment key={item.id}>
+                                <TodoItem
+                                    description={item.title}
+                                    onChange={(data) => {}}
+                                    onDelete={(data) => {}}
+                                    onCheck={(data) => {}}
+                                    onVoice={(data) => {}}
+                                    isChecked={false}
+                                    id={item.id}
+                                />
+                            </React.Fragment>
                         )
                     })
                 }
