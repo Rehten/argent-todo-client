@@ -1,26 +1,41 @@
-import React, { useState } from 'react';
-import { Form } from "react-bootstrap";
-import { ArgentInput } from "./components/argent-input";
+import React from "react";
+import { ListGroup } from "react-bootstrap";
+import { TodoItem } from "./components/todo-item";
+import classes from "./App.module.css";
 
 const App: React.FC = () => {
-    const [name, setName] = useState('');
-    console.log(name);
+    const todos = [
+        {id: 1, title: 'Сделать зарядку'},
+        {id: 2, title: 'Купить молоко'},
+        {id: 3, title: 'Сходить на спорт'},
+        {id: 4, title: 'Чтение книги'},
+    ];
 
     return (
         <div className="container">
-            <h2 style={{marginTop: '2rem'}}>OnChange Input</h2>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Your Name</Form.Label>
-                <ArgentInput
-                    type="text"
-                    // placeholder="Enter your name"
-                    value={name}
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)}
-                />
-            </Form.Group>
+            <h2 className={classes.todoTitle}>План на день</h2>
+            <p className={classes.todoDate}>воскресенье, 12 января</p>
+            <ListGroup variant="flush">
+                {
+                    todos.map(item => {
+                        return (
+                            <React.Fragment key={item.id}>
+                                <TodoItem
+                                    description={item.title}
+                                    onChange={(data) => {}}
+                                    onDelete={(data) => {}}
+                                    onCheck={(data) => {}}
+                                    onVoice={(data) => {}}
+                                    isChecked={false}
+                                    id={item.id}
+                                />
+                            </React.Fragment>
+                        )
+                    })
+                }
+            </ListGroup>
         </div>
     )
 };
-
 
 export default App;
