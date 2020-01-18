@@ -1,20 +1,9 @@
-import React from 'react';
+import React from "react";
 import { ListGroup } from "react-bootstrap";
-import {TodoItem} from "./components/todo-item";
-import classes from './App.module.css';
+import { TodoItem } from "./components/todo-item";
+import classes from "./App.module.css";
 
 const App: React.FC = () => {
-
-    const style = {
-        title: {
-            marginTop: '2rem',
-            marginBottom: 0
-        },
-        span: {
-            fontSize: '12px'
-        },
-    };
-
     const todos = [
         {id: 1, title: 'Сделать зарядку'},
         {id: 2, title: 'Купить молоко'},
@@ -24,8 +13,8 @@ const App: React.FC = () => {
 
     return (
         <div className="container">
-            <h2 className={classes['todo-title']}>План на день</h2>
-            <p className={classes['todo-date']}>воскресенье, 12 января</p>
+            <h2 className={classes.todoTitle}>План на день</h2>
+            <p className={classes.todoDate}>воскресенье, 12 января</p>
             <ListGroup variant="flush">
                 {
                     todos.map(item => {

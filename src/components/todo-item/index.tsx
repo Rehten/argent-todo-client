@@ -1,7 +1,9 @@
-import {ListGroup} from "react-bootstrap";
-import React, {useState} from "react";
-import style from './index.module.css';
-import {ArgentInput} from "../argent-input";
+import React, { useState } from "react";
+import { ListGroup } from "react-bootstrap";
+import style from "./index.module.css";
+import { ArgentInput } from "../argent-input";
+import { FaRegTrashAlt, FaRegEdit, FaRegStar } from "react-icons/all";
+
 
 interface Props {
     id: number;
@@ -44,15 +46,21 @@ export const TodoItem = (data: Props) => {
             }
         </div>
         <div>
-            <span onClick={() => onVoice(data)} className={style.icon}>
-                <i className="far fa-star" />
-            </span>
-            <span onClick={() => setEditable(!isEditable)} className={style.icon}>
-                <i className="far fa-edit" />
-            </span>
-            <span onClick={() => onDelete(data)} className={style.icon}>
-                <i className="far fa-trash-alt" />
-            </span>
+            <FaRegStar
+                className={style.icon}
+                onClick={() => onVoice(data)}
+                size="1.2em"
+            />
+            <FaRegEdit
+                className={style.icon}
+                onClick={() => setEditable(!isEditable)}
+                size="1.1em"
+            />
+            <FaRegTrashAlt
+                className={style.icon}
+                onClick={() => onDelete(data)}
+                size="1.1em"
+            />
         </div>
     </ListGroup.Item>);
 };

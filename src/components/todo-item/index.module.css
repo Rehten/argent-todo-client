@@ -12,5 +12,7 @@
 
 .icon {
     margin-right: 1.7rem;
+
     color: #707070;
+    cursor: pointer;
 }
