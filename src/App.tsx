@@ -1,25 +1,9 @@
 import React from 'react';
 import { ListGroup } from "react-bootstrap";
+import { FaRegStar, FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
+import classes from './App.module.css';
 
 const App: React.FC = () => {
-
-    const style = {
-        title: {
-            marginTop: '2rem',
-            marginBottom: 0
-        },
-        span: {
-            fontSize: '12px'
-        },
-        listGroupItem: {
-            paddingLeft: 0,
-            paddingRight: 0,
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center'
-        }
-    };
-
     const todos = [
         {id: 1, title: 'Сделать зарядку'},
         {id: 2, title: 'Купить молоко'},
@@ -29,26 +13,26 @@ const App: React.FC = () => {
 
     return (
         <div className="container">
-            <h2 style={style.title}>План на день</h2>
-            <p style={style.span}>воскресенье, 12 января</p>
+            <h2 className={classes['todo-title']}>План на день</h2>
+            <p className={classes['todo-date']}>воскресенье, 12 января</p>
             <ListGroup variant="flush">
                 {
                     todos.map(item => {
                         return (
-                            <ListGroup.Item style={style.listGroupItem} key={item.id}>
-                                <div style={style.listGroupItem}>
+                            <ListGroup.Item className={classes['todo-item']} key={item.id}>
+                                <div className={classes['todo-item']}>
                                     <input type="checkbox" />
-                                    <div style={{marginLeft: "1rem"}}>{item.title}</div>
+                                    <div className={classes['todo-description']}>{item.title}</div>
                                 </div>
                                 <div>
-                                    <span style={{marginRight: "1.7rem", color: "#707070"}}>
-                                        <i className="far fa-star"></i>
+                                    <span className={classes['todo-icon']} style={{cursor: 'pointer'}}>
+                                        <FaRegStar size="1.2em" />
                                     </span>
-                                                <span style={{marginRight: "1.7rem", color: "#707070"}}>
-                                        <i className="far fa-edit"></i>
+                                    <span className={classes['todo-icon']}>
+                                        <FaRegEdit size="1.1em" />
                                     </span>
-                                                <span style={{marginRight: "1.7rem", color: "#707070"}}>
-                                        <i className="far fa-trash-alt"></i>
+                                    <span className={classes['todo-icon']}>
+                                        <FaRegTrashAlt size="1.1em" />
                                     </span>
                                 </div>
                             </ListGroup.Item>
@@ -59,6 +43,5 @@ const App: React.FC = () => {
         </div>
     )
 };
-
 
 export default App;

@@ -1,0 +1,27 @@
+.todo-title {
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.todo-date {
+    font-size: 12px;
+}
+
+.todo-item {
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-description {
+    margin-left: 1rem;
+}
+
+.todo-icon {
+    margin-left: 1.7rem;
+
+    color: #000;
+    opacity: .5;
+}
